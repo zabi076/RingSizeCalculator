@@ -21,11 +21,13 @@ const RingSlider = () => {
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLInputElement>) => {
+    e.preventDefault(); // Prevent scrolling while sliding
     const touch = e.touches[0];
     const slider = e.currentTarget;
     const rect = slider.getBoundingClientRect();
     const newSize = ((touch.clientX - rect.left) / rect.width) * (23 - 14) + 14;
-    setSize(Math.min(Math.max(newSize, 14), 23));
+    const clampedSize = Math.min(Math.max(newSize, 14), 23);
+    handleSizeChange(parseFloat(clampedSize.toFixed(1)));
   };
 
   const calculateRingSize = (diameter: number) => {
@@ -40,7 +42,7 @@ const RingSlider = () => {
           style={{ width: `${size * 5}px`, height: `${size * 5}px`, backgroundColor: 'gray' }}
         ></div>
         <div className="absolute inset-0 flex items-center justify-center text-gray-800 font-bold text-xl">
-          {size} mm
+          {size.toFixed(1)} mm
         </div>
       </div>
 
@@ -49,9 +51,11 @@ const RingSlider = () => {
           type="range"
           min="14"
           max="23"
+          step="0.1"
           value={size}
-          onChange={(e) => handleSizeChange(Number(e.target.value))}
+          onChange={(e) => handleSizeChange(parseFloat(e.target.value))}
           onTouchMove={handleTouchMove}
+          onTouchStart={(e) => e.preventDefault()} // Prevent scrolling on touch start
           className="w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer shadow-inner"
         />
         <div className="relative mt-2">

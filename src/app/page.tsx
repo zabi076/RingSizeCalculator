@@ -10,9 +10,9 @@ const RingSizeCalculator = () => {
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 text-center">
           RING SIZE CALCULATOR</h1>
       </div>
-
-      <SizeChart />
       <RingSlider />
+      <SizeChart />
+
     </div>
   );
 };
