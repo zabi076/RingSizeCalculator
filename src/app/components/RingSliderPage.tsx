@@ -36,20 +36,22 @@ const RingSlider = () => {
 
   return (
     <div 
-      className="flex flex-col items-center"
+      className="flex flex-col items-center w-full"
       style={{
-        maxWidth: '100%',
-        width: '100%',
         height: '100vh',
         overflow: 'hidden', // Prevents scrolling on mobile
         touchAction: 'none', // Disables touch gestures like zoom
       }}
     >
       <div 
-        className="w-40 h-40 bg-gray-200 rounded-full mb-8 mt-4 flex items-center justify-center relative"
+        className="bg-gray-200 rounded-full mb-8 mt-4 flex items-center justify-center relative"
         style={{ 
-          padding: '10px', // Reduced padding for better mobile view
-          margin: '10px', // Added margin for spacing
+          width: '50vw', // Responsive width (50% of viewport width)
+          height: '50vw', // Responsive height (50% of viewport width)
+          maxWidth: '300px', // Max width for larger screens
+          maxHeight: '300px', // Max height for larger screens
+          padding: '10px', 
+          margin: '10px', 
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
           transform: 'translateY(-20px)',
           pointerEvents: 'none' // Removed pointer events to make it non-interactive
@@ -64,13 +66,13 @@ const RingSlider = () => {
           }}
         ></div>
       </div>
-      <div className="text-2xl font-bold mb-4">
+      <div className="text-2xl font-bold mb-4 text-center">
         Diameter: {size.toFixed(1)} mm
       </div>
-      <div className="text-xl mb-4">
+      <div className="text-xl mb-4 text-center">
         Circumference: {calculateRingCircumference(size)} mm
       </div>
-      <div className="w-full max-w-md mb-4">
+      <div className="w-full max-w-md mb-4 px-4">
         <input
           type="range"
           min="18"
@@ -84,7 +86,7 @@ const RingSlider = () => {
           style={{ touchAction: 'none' }} // Disable touch scrolling to avoid conflicts
         />
       </div>
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 w-full px-4">
         <Sliders className="mr-2" />
         <span>18 mm</span>
         <div className="flex-grow mx-2 h-px bg-gray-300"></div>
@@ -105,7 +107,7 @@ const RingSlider = () => {
           )}
         </Button>
       ) : (
-        <div className="text-lg mb-4">
+        <div className="text-lg mb-4 text-center">
           Your Perfect Size:
           <br />
           Diameter: {perfectSize.toFixed(1)} mm
