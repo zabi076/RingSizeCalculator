@@ -39,10 +39,10 @@ const RingSlider = () => {
       <div 
         className="bg-gray-200 rounded-full flex items-center justify-center relative"
         style={{ 
-          width: '60vw', // Responsive width (60% of viewport width)
-          height: '60vw', // Responsive height (60% of viewport width)
-          maxWidth: '300px', // Max width for larger screens
-          maxHeight: '300px', // Max height for larger screens
+          width: '80vw', // Increased to 80% of viewport width for better size on mobile
+          height: '80vw', // Increased to 80% of viewport height for better size on mobile
+          maxWidth: '350px', // Increased max width for larger screens
+          maxHeight: '350px', // Increased max height for larger screens
           padding: '10px', 
           marginBottom: '20px',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
