@@ -35,26 +35,18 @@ const RingSlider = () => {
   };
 
   return (
-    <div 
-      className="flex flex-col items-center w-full"
-      style={{
-        height: '100vh',
-        overflow: 'hidden', // Prevents scrolling on mobile
-        touchAction: 'none', // Disables touch gestures like zoom
-      }}
-    >
+    <div className="flex flex-col items-center w-full px-4 py-6 sm:py-8 md:py-12">
       <div 
-        className="bg-gray-200 rounded-full mb-8 mt-4 flex items-center justify-center relative"
+        className="bg-gray-200 rounded-full flex items-center justify-center relative"
         style={{ 
-          width: '50vw', // Responsive width (50% of viewport width)
-          height: '50vw', // Responsive height (50% of viewport width)
+          width: '60vw', // Responsive width (60% of viewport width)
+          height: '60vw', // Responsive height (60% of viewport width)
           maxWidth: '300px', // Max width for larger screens
           maxHeight: '300px', // Max height for larger screens
           padding: '10px', 
-          margin: '10px', 
+          marginBottom: '20px',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          transform: 'translateY(-20px)',
-          pointerEvents: 'none' // Removed pointer events to make it non-interactive
+          pointerEvents: 'none' 
         }}
       >
         <div 
@@ -83,7 +75,7 @@ const RingSlider = () => {
           onTouchMove={(e) => handleTouchMove(e)}
           onTouchStart={(e) => e.preventDefault()}
           className="w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer shadow-inner"
-          style={{ touchAction: 'none' }} // Disable touch scrolling to avoid conflicts
+          style={{ touchAction: 'none' }} 
         />
       </div>
       <div className="flex items-center mb-4 w-full px-4">

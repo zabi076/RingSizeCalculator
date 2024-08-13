@@ -25,10 +25,11 @@ const standardRingSizes = [
   { size: 'US 24', diameter: 31.0, uk: 'Z+12', eu: '97.7', jp: '50', aus: 'Z+12' },
 ];
 
+
 const SizeChart = () => {
   return (
-    <div className="w-full h-full bg-white rounded-md shadow-lg p-4 mb-8 overflow-x-auto">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Standard Ring Sizes</h2>
+    <div className="w-full bg-white rounded-md shadow-lg p-4 mb-8 overflow-x-auto">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Standard Ring Sizes</h2>
       <table className="w-full text-left border-collapse">
         <thead>
           <tr>
@@ -42,7 +43,7 @@ const SizeChart = () => {
         </thead>
         <tbody>
           {standardRingSizes.map((ring, index) => (
-            <tr key={index}>
+            <tr key={index} className="hover:bg-gray-100 transition-colors">
               <td className="border-b py-2 px-4 text-purple-700 font-medium">{ring.size}</td>
               <td className="border-b py-2 px-4 text-blue-700 font-medium">{ring.uk}</td>
               <td className="border-b py-2 px-4 text-green-700 font-medium">{ring.eu}</td>
