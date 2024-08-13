@@ -35,14 +35,24 @@ const RingSlider = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div 
+      className="flex flex-col items-center"
+      style={{
+        maxWidth: '100%',
+        width: '100%',
+        height: '100vh',
+        overflow: 'hidden', // Prevents scrolling on mobile
+        touchAction: 'none', // Disables touch gestures like zoom
+      }}
+    >
       <div 
-        className="w-40 h-40 bg-gray-200 rounded mb-8 mt-4 flex items-center justify-center relative"
+        className="w-40 h-40 bg-gray-200 rounded-full mb-8 mt-4 flex items-center justify-center relative"
         style={{ 
-          pointerEvents: 'none',
-          padding: '20px',
+          padding: '10px', // Reduced padding for better mobile view
+          margin: '10px', // Added margin for spacing
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          transform: 'translateY(-20px)'
+          transform: 'translateY(-20px)',
+          pointerEvents: 'none' // Removed pointer events to make it non-interactive
         }}
       >
         <div 
@@ -68,9 +78,10 @@ const RingSlider = () => {
           step="0.1"
           value={size}
           onChange={(e) => handleSizeChange(parseFloat(e.target.value))}
-          onTouchMove={handleTouchMove}
+          onTouchMove={(e) => handleTouchMove(e)}
           onTouchStart={(e) => e.preventDefault()}
           className="w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer shadow-inner"
+          style={{ touchAction: 'none' }} // Disable touch scrolling to avoid conflicts
         />
       </div>
       <div className="flex items-center mb-4">
