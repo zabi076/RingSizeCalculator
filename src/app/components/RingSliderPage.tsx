@@ -4,8 +4,8 @@ import { Sliders, CheckCircle, Edit } from 'lucide-react';
 import Button from './button';
 
 const RingSlider = () => {
-  const [size, setSize] = useState(23.5); // Set initial size to middle of new range
-  const [perfectSize, setPerfectSize] = useState<number | null>(null);
+  const [size, setSize] = useState(23.5);
+  const [perfectSize, setPerfectSize] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSizeChange = (newSize: number) => {
@@ -20,8 +20,8 @@ const RingSlider = () => {
     setIsEditing(false);
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLInputElement>) => {
-    e.preventDefault(); // Prevent scrolling while sliding
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
     const touch = e.touches[0];
     const slider = e.currentTarget;
     const rect = slider.getBoundingClientRect();
@@ -30,70 +30,81 @@ const RingSlider = () => {
     handleSizeChange(parseFloat(clampedSize.toFixed(1)));
   };
 
-  const calculateRingSize = (diameter: number) => {
+  const calculateRingCircumference = (diameter: number) => {
     return (diameter * Math.PI).toFixed(2);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full max-w-md">
-      <div className="relative mb-8">
-        <div
-          className="border-4 border-gray-800 rounded-full transition-all duration-300 ease-in-out shadow-xl"
-          style={{ width: `${size * 5}px`, height: `${size * 5}px`, backgroundColor: 'gray' }}
+    <div className="flex flex-col items-center">
+      <div 
+        className="w-40 h-40 bg-gray-200 rounded mb-8 mt-4 flex items-center justify-center relative"
+        style={{ 
+          pointerEvents: 'none',
+          padding: '20px',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          transform: 'translateY(-20px)'
+        }}
+      >
+        <div 
+          className="bg-white rounded-full"
+          style={{
+            width: `${size}mm`,
+            height: `${size}mm`,
+            border: '2px solid #4a5568'
+          }}
         ></div>
-        <div className="absolute inset-0 flex items-center justify-center text-gray-800 font-bold text-xl">
-          {size.toFixed(1)} mm
-        </div>
       </div>
-
-      <div className="w-64 md:w-96">
+      <div className="text-2xl font-bold mb-4">
+        Diameter: {size.toFixed(1)} mm
+      </div>
+      <div className="text-xl mb-4">
+        Circumference: {calculateRingCircumference(size)} mm
+      </div>
+      <div className="w-full max-w-md mb-4">
         <input
           type="range"
           min="18"
-          max="30"
+          max="33"
           step="0.1"
           value={size}
           onChange={(e) => handleSizeChange(parseFloat(e.target.value))}
           onTouchMove={handleTouchMove}
-          onTouchStart={(e) => e.preventDefault()} // Prevent scrolling on touch start
+          onTouchStart={(e) => e.preventDefault()}
           className="w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer shadow-inner"
         />
-        <div className="relative mt-2">
-          <div className="absolute left-0 -ml-1">
-            <Sliders size={20} className="text-gray-800" />
-          </div>
-          <div className="absolute right-0 -mr-1">
-            <Sliders size={20} className="text-gray-800" />
-          </div>
-        </div>
       </div>
-
-      <div className="mt-4 text-gray-800 text-xl font-semibold font-mono">
-        Ring Circumference: {calculateRingSize(size)} mm
+      <div className="flex items-center mb-4">
+        <Sliders className="mr-2" />
+        <span>18 mm</span>
+        <div className="flex-grow mx-2 h-px bg-gray-300"></div>
+        <span>33 mm</span>
       </div>
-
       {perfectSize === null || isEditing ? (
         <Button onClick={handleSetPerfectSize}>
           {isEditing ? (
             <>
-              <Edit size={20} className="inline-block mr-2" />
+              <CheckCircle className="mr-2" />
               Update Perfect Size
             </>
           ) : (
             <>
-              <CheckCircle size={20} className="inline-block mr-2" />
+              <CheckCircle className="mr-2" />
               Set Perfect Size
             </>
           )}
         </Button>
       ) : (
-        <div className="mt-4 text-gray-800 text-xl font-semibold">
-          Your Perfect Size: {calculateRingSize(perfectSize)} mm
+        <div className="text-lg mb-4">
+          Your Perfect Size:
+          <br />
+          Diameter: {perfectSize.toFixed(1)} mm
+          <br />
+          Circumference: {calculateRingCircumference(perfectSize)} mm
           <button
             onClick={() => setIsEditing(true)}
             className="ml-4 mt-2 px-4 py-2 bg-blue-500 text-white rounded-md font-semibold hover:bg-blue-600 transition-colors shadow-lg"
           >
-            <Edit size={20} className="inline-block mr-2" />
+            <Edit className="mr-2 inline" />
             Edit Size
           </button>
         </div>

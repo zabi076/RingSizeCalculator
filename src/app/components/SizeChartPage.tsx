@@ -13,6 +13,16 @@ const standardRingSizes = [
   { size: 'US 12', diameter: 21.4, uk: 'Y', eu: '67.2', jp: '25', aus: 'Y' },
   { size: 'US 13', diameter: 22.2, uk: 'Z+1', eu: '69.7', jp: '27', aus: 'Z+1' },
   { size: 'US 14', diameter: 23.0, uk: 'Z+2', eu: '72.3', jp: '30', aus: 'Z+2' },
+  { size: 'US 15', diameter: 23.8, uk: 'Z+3', eu: '74.8', jp: '32', aus: 'Z+3' },
+  { size: 'US 16', diameter: 24.6, uk: 'Z+4', eu: '77.3', jp: '34', aus: 'Z+4' },
+  { size: 'US 17', diameter: 25.4, uk: 'Z+5', eu: '79.8', jp: '36', aus: 'Z+5' },
+  { size: 'US 18', diameter: 26.2, uk: 'Z+6', eu: '82.4', jp: '38', aus: 'Z+6' },
+  { size: 'US 19', diameter: 27.0, uk: 'Z+7', eu: '85.0', jp: '40', aus: 'Z+7' },
+  {size: 'US 20', diameter: 27.8, uk: 'Z+8', eu: '87.5', jp: '42', aus: 'Z+8' },
+  { size: 'US 21', diameter: 28.6, uk: 'Z+9', eu: '90.1', jp: '44', aus: 'Z+9' },
+  { size: 'US 22', diameter: 29.4, uk: 'Z+10', eu: '92.6', jp: '46', aus: 'Z+10' }, 
+  { size: 'US 23', diameter: 30.2, uk: 'Z+11', eu: '95.2', jp: '48', aus: 'Z+11' }, 
+  { size: 'US 24', diameter: 31.0, uk: 'Z+12', eu: '97.7', jp: '50', aus: 'Z+12' },
 ];
 
 const SizeChart = () => {
