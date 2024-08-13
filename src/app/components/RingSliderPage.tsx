@@ -5,7 +5,7 @@ import Button from './button';
 
 const RingSlider = () => {
   const [size, setSize] = useState(23.5);
-  const [perfectSize, setPerfectSize] = useState(null);
+  const [perfectSize, setPerfectSize] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSizeChange = (newSize: number) => {
