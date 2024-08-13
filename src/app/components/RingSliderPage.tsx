@@ -4,7 +4,7 @@ import { Sliders, CheckCircle, Edit } from 'lucide-react';
 import Button from './button';
 
 const RingSlider = () => {
-  const [size, setSize] = useState(18.1);
+  const [size, setSize] = useState(22.5); // Set initial size to middle of new range
   const [perfectSize, setPerfectSize] = useState<number | null>(null);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -25,8 +25,8 @@ const RingSlider = () => {
     const touch = e.touches[0];
     const slider = e.currentTarget;
     const rect = slider.getBoundingClientRect();
-    const newSize = ((touch.clientX - rect.left) / rect.width) * (23 - 14) + 14;
-    const clampedSize = Math.min(Math.max(newSize, 14), 23);
+    const newSize = ((touch.clientX - rect.left) / rect.width) * (30 - 15) + 15;
+    const clampedSize = Math.min(Math.max(newSize, 15), 30);
     handleSizeChange(parseFloat(clampedSize.toFixed(1)));
   };
 
@@ -49,8 +49,8 @@ const RingSlider = () => {
       <div className="w-64 md:w-96">
         <input
           type="range"
-          min="14"
-          max="23"
+          min="15"
+          max="30"
           step="0.1"
           value={size}
           onChange={(e) => handleSizeChange(parseFloat(e.target.value))}
