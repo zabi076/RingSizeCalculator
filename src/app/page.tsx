@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
-import RingSlider from '../app/components/ringslider';
-import SizeChart from '../app/components/sizechart';
+import RingSlider from './components/RingSliderPage';
+import SizeChart from './components/SizeChartPage';
 
 const RingSizeCalculator = () => {
   return (

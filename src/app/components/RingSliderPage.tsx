@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Sliders, CheckCircle, Edit } from 'lucide-react';
-import Button from '../components/button';
+import Button from './button';
 
 const RingSlider = () => {
   const [size, setSize] = useState(18.1);
