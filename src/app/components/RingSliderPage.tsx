@@ -39,8 +39,8 @@ const RingSlider = () => {
       <div 
         className="flex items-center justify-center relative bg-gray-200 rounded-full"
         style={{ 
-          width: 'clamp(220px, 80vw, 440px)', // Adjust container size slightly larger
-          height: 'clamp(220px, 80vw, 440px)', // Adjust container size slightly larger
+          width: 'clamp(250px, 60vw, 450px)', // Container responsive size
+          height: 'clamp(250px, 60vw, 450px)', // Container responsive size
           marginBottom: '20px',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
           padding: '10px'
