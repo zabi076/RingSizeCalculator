@@ -4,7 +4,7 @@ import { Sliders, CheckCircle, Edit } from 'lucide-react';
 import Button from './button';
 
 const RingSlider = () => {
-  const [size, setSize] = useState(23.5);
+  const [size, setSize] = useState(23.5); // Default size in mm
   const [perfectSize, setPerfectSize] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -25,8 +25,8 @@ const RingSlider = () => {
     const touch = e.touches[0];
     const slider = e.currentTarget;
     const rect = slider.getBoundingClientRect();
-    const newSize = ((touch.clientX - rect.left) / rect.width) * (30 - 18) + 15;
-    const clampedSize = Math.min(Math.max(newSize, 18), 30);
+    const newSize = ((touch.clientX - rect.left) / rect.width) * (40 - 18) + 18; // Adjusted range to 18 - 40 mm
+    const clampedSize = Math.min(Math.max(newSize, 18), 40);
     handleSizeChange(parseFloat(clampedSize.toFixed(1)));
   };
 
@@ -37,23 +37,20 @@ const RingSlider = () => {
   return (
     <div className="flex flex-col items-center w-full px-4 py-6 sm:py-8 md:py-12">
       <div 
-        className="bg-gray-200 rounded-full flex items-center justify-center relative"
+        className="flex items-center justify-center relative bg-gray-200 rounded-full"
         style={{ 
-          width: '80vw', // Increased to 80% of viewport width for better size on mobile
-          height: '80vw', // Increased to 80% of viewport height for better size on mobile
-          maxWidth: '350px', // Increased max width for larger screens
-          maxHeight: '350px', // Increased max height for larger screens
-          padding: '10px', 
+          width: 'clamp(220px, 80vw, 440px)', // Adjust container size slightly larger
+          height: 'clamp(220px, 80vw, 440px)', // Adjust container size slightly larger
           marginBottom: '20px',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          pointerEvents: 'none' 
+          padding: '10px'
         }}
       >
         <div 
           className="bg-white rounded-full"
           style={{
-            width: `${size}mm`,
-            height: `${size}mm`,
+            width: `${size}mm`, // Actual circle size in mm
+            height: `${size}mm`, // Actual circle size in mm
             border: '2px solid #4a5568'
           }}
         ></div>
@@ -68,7 +65,7 @@ const RingSlider = () => {
         <input
           type="range"
           min="18"
-          max="33"
+          max="40"
           step="0.1"
           value={size}
           onChange={(e) => handleSizeChange(parseFloat(e.target.value))}
@@ -82,7 +79,7 @@ const RingSlider = () => {
         <Sliders className="mr-2" />
         <span>18 mm</span>
         <div className="flex-grow mx-2 h-px bg-gray-300"></div>
-        <span>33 mm</span>
+        <span>40 mm</span>
       </div>
       {perfectSize === null || isEditing ? (
         <Button onClick={handleSetPerfectSize}>
