@@ -1,20 +1,19 @@
-"use client";
 import React from 'react';
-import RingSlider from './components/RingSliderPage';
+import RingSlider from '../app/components/RingSliderPage';
 import SizeChart from './components/SizeChartPage';
 
-const RingSizeCalculator = () => {
+const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4 flex flex-col items-center justify-start">
-    <div className="w-full max-w-md mb-8">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 text-center">
-          RING SIZE CALCULATOR</h1>
+      <div className="w-full max-w-md mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 text-center">
+          Ring Size Calculator
+        </h1>
       </div>
       <RingSlider />
-      <SizeChart />
-
+      <SizeChart/>
     </div>
   );
 };
 
-export default RingSizeCalculator;
+export default HomePage;

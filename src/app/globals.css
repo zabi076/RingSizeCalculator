@@ -1,7 +1,43 @@
-/* globals.css */
+/* Global Centering and Styling */
 
-/* Disable double-tap to zoom */
 body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  /* RingSlider Styles */
+  
+  /* Mobile devices (max-width: 600px) */
+  @media (max-width: 600px) {
+    .ring-container {
+      width: 80vw;  /* Use 80% of the viewport width */
+      height: 80vw;
+    }
+  }
+  
+  /* Tablets (min-width: 601px and max-width: 1024px) */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .ring-container {
+      width: 60vw;  /* Use 60% of the viewport width */
+      height: 60vw;
+    }
+  }
+  
+  /* Desktops (min-width: 1025px) */
+  @media (min-width: 1025px) {
+    .ring-container {
+      width: 400px;  /* Fixed size for larger screens */
+      height: 400px;
+    }
+  }
+  
+  /* Disable double-tap to zoom */
+  body {
     touch-action: manipulation;
   }
   
@@ -10,22 +46,11 @@ body {
     overflow-x: hidden;
   }
   
-  /* Prevent scaling */
+  /* Prevent pinch-zoom and scaling */
   html, body {
-    -ms-touch-action: manipulation;
     touch-action: manipulation;
     user-select: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
-  }
-  
-  /* Optional: Prevent zoom on input focus by setting font size to 16px or higher */
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  input[type="password"],
-  select,
-  textarea {
-    font-size: 16px;
   }
   
