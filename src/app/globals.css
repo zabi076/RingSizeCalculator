@@ -1,4 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* globals.css */
 
+/* Disable double-tap to zoom */
+body {
+    touch-action: manipulation;
+  }
+  
+  /* Disable pinch-zoom */
+  html {
+    overflow-x: hidden;
+  }
+  
+  /* Prevent scaling */
+  html, body {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Optional: Prevent zoom on input focus by setting font size to 16px or higher */
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  
