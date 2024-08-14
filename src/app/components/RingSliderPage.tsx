@@ -13,9 +13,6 @@ const RingSizeCalculator = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      {/* Title */}
-      <h1 className="text-3xl font-bold mb-4 text-center">Ring Size Calculator</h1>
-
       {/* Circle */}
       <div 
         className="flex items-center justify-center mb-8"
@@ -35,12 +32,89 @@ const RingSizeCalculator = () => {
           max="30"
           value={size}
           onChange={(e) => handleSizeChange(parseFloat(e.target.value))}
-          className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
-          style={{ 
+          className="w-full h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer"
+          style={{
             appearance: 'none',
             outline: 'none',
+            background: 'gray', // Slider track color
           }}
         />
+        <style jsx>{`
+          input[type='range']::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px; // Default thumb size for mobile
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db; // Blue color for the thumb
+            cursor: pointer;
+          }
+
+          input[type='range']::-moz-range-thumb {
+            width: 20px; // Default thumb size for mobile
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db; // Blue color for the thumb
+            cursor: pointer;
+          }
+
+          input[type='range']::-ms-thumb {
+            width: 20px; // Default thumb size for mobile
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db; // Blue color for the thumb
+            cursor: pointer;
+          }
+
+          /* Desktop-specific styles */
+          @media (min-width: 1024px) {
+            input[type='range'] {
+              height: 2px; // Smaller track height for desktop
+            }
+
+            input[type='range']::-webkit-slider-thumb {
+              width: 25px; // Larger thumb size for desktop
+              height: 25px;
+            }
+
+            input[type='range']::-moz-range-thumb {
+              width: 25px; // Larger thumb size for desktop
+              height: 25px;
+            }
+
+            input[type='range']::-ms-thumb {
+              width: 25px; // Larger thumb size for desktop
+              height: 25px;
+            }
+
+            /* Circle size scaling */
+            .circle {
+              width: ${mmToPx(size)}px;
+              height: ${mmToPx(size)}px;
+            }
+          }
+
+          /* Mobile-specific styles */
+          @media (max-width: 1023px) {
+            input[type='range'] {
+              height: 4px; // Larger track height for mobile
+            }
+
+            input[type='range']::-webkit-slider-thumb {
+              width: 20px; // Default thumb size for mobile
+              height: 20px;
+            }
+
+            input[type='range']::-moz-range-thumb {
+              width: 20px; // Default thumb size for mobile
+              height: 20px;
+            }
+
+            input[type='range']::-ms-thumb {
+              width: 20px; // Default thumb size for mobile
+              height: 20px;
+            }
+          }
+        `}</style>
       </div>
 
       {/* Diameter Display */}
